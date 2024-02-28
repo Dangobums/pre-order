@@ -10,6 +10,7 @@ export default defineConfig({
       '@': resolve(__dirname, './src'),
     },
   },
+  base: '/pre-order',
   server: {
     port: 3000,
   },
