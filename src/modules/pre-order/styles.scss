@@ -1,41 +1,52 @@
 .outer {
-  background: #eee;
   padding: 30px;
   min-height: 100px;
 }
 
 .nested-enter-active,
 .nested-leave-active {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
-.nested-leave-active {
-  transition-delay: 0.25s;
-}
+// .nested-leave-active {
+//   transition-delay: 0.25s;
+// }
 
 .nested-enter-from,
 .nested-leave-to {
-  transform: translateY(30px);
+  transform: translateX(40px);
   opacity: 0;
 }
-
+i
 /* we can also transition nested elements using nested selectors */
 .nested-enter-active .inner,
 .nested-leave-active .inner {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.9s ease-in-out;
 }
 /* delay enter of nested element */
-.nested-enter-active .inner {
-  transition-delay: 0.25s;
-}
+// .nested-enter-active .inner {
+//   transition-delay: 0.25s;
+// }
 
 .nested-enter-from .inner,
 .nested-leave-to .inner {
-  transform: translateX(30px);
-  /*
-  	Hack around a Chrome 96 bug in handling nested opacity transitions.
-    This is not needed in other browsers or Chrome 99+ where the bug
-    has been fixed.
-  */
+  transform: translateX(20px);
   opacity: 0.001;
+}
+
+.stepBar {
+  position: relative;
+  float: left;
+  z-index: 0;
+
+  &::before {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    content: '';
+    // background: lightgray;
+    border: 1px solid lightgray;
+    z-index: 1;
+  }
 }
