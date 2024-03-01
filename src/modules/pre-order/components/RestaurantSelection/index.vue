@@ -1,8 +1,11 @@
 <template>
   <ElFormItem prop="restaurant">
-    <ElSelect v-model:model-value="restaurantSelection">
-      <ElOption v-for="item of restaurantByMeal" :key="item" :value="item" :label="item"></ElOption>
-    </ElSelect>
+    <div class="w-full">
+      <div>Please select a restaurant</div>
+      <ElSelect v-model:model-value="restaurantSelection">
+        <ElOption v-for="item of restaurantByMeal" :key="item" :value="item" :label="item"></ElOption>
+      </ElSelect>
+    </div>
   </ElFormItem>
 </template>
 <script setup lang="ts">

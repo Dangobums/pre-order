@@ -1,12 +1,12 @@
 <template>
   <div class="w-full">
-    <div class="mb-2">Please select a meal</div>
+    <div class="mb-2 text-lg font-medium">Please select a meal</div>
     <ElFormItem class="w-full" prop="mealType">
       <ElSelect
         v-model:model-value="mealValue"
         :options="mealSelection"
         placeholder="Select a meal"
-        class="w-[120px]"
+        class="w-full"
       >
         <ElOption
           v-for="item of mealSelection"

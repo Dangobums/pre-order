@@ -1,10 +1,10 @@
 <template>
-  <div class="grid grid-cols-4">
-    <ElSelect :model-value="currentInfo.id" class="col-span-3" @change="handleSelectOption">
+  <div class="grid grid-cols-4 gap-4">
+    <ElSelect :model-value="currentInfo.id" class="col-span-4" @change="handleSelectOption">
       <ElOption v-for="item of menuItem" :key="item.id" :value="item.id" :label="item.label"></ElOption>
     </ElSelect>
 
-    <ElInputNumber v-model="modelServing" class="col-start-5" label="dishes" />
+    <ElInputNumber v-model="modelServing" class="col-start-5" label="dishes" :controls-position="'right'" />
   </div>
 </template>
 <script setup lang="ts">

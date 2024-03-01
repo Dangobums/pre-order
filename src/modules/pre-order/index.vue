@@ -1,48 +1,46 @@
 <template>
-  <div class="p-4">
-    <ElSteps :active="currentStep">
-      <ElStep
-        v-for="step of STEP_LIST"
-        :key="step.id"
-        :title="step.title"
-        :status="currentStep === step.id && isError ? 'error' : currentStep > step.id ? 'success' : ''"
-      />
-    </ElSteps>
-    <ElForm ref="ruleFormRef" :rules="rules" :model="mealForm">
-      <Transition name="nested" :duration="{ enter: 500, leave: 10 }">
-        <div v-if="currentStep === FORM_STEP.MEAL" class="outer m-4 rounded">
-          <MealSelection
-            v-model:mealType="mealForm.mealType"
-            v-model:peopleCount="mealForm.customerCount"
-            class="inner"
-          />
-        </div>
+  <div class="bg-light-green overflow-hidden p-10">
+    <div class="bg-light-gray rounded-lg p-4">
+      <ElSteps :active="currentStep" finish-status="success">
+        <ElStep v-for="step of STEP_LIST" :key="step.id" :title="step.title" />
+      </ElSteps>
+      <ElForm ref="ruleFormRef" :rules="rules" :model="mealForm">
+        <Transition name="nested" :duration="{ enter: 500, leave: 10 }">
+          <div v-if="currentStep === FORM_STEP.MEAL" class="outer m-4 rounded">
+            <MealSelection
+              v-model:mealType="mealForm.mealType"
+              v-model:peopleCount="mealForm.customerCount"
+              class="inner"
+            />
+          </div>
 
-        <div v-else-if="currentStep === FORM_STEP.RESTAURANT" class="outer m-4 rounded">
-          <RestaurantSelection
-            v-model:restaurantSelection="mealForm.restaurant"
-            class="inner"
-            :mealSelection="mealForm.mealType"
-          />
-        </div>
-        <div v-else-if="currentStep === FORM_STEP.DISHED" class="outer m-4 rounded">
-          <CreateDishList
-            v-model:dishSelection="mealForm.dishes"
-            class="inner"
-            :restaurant="mealForm.restaurant"
-          />
-        </div>
-        <div v-else-if="currentStep === FORM_STEP.SUBMIT" class="outer m-4 rounded">
-          <FormOverview class="inner" :formInfo="mealForm" />
-        </div>
-      </Transition>
-    </ElForm>
-
-    <div class="flex items-center justify-between px-4">
-      <el-button v-if="currentStep > 1" style="margin-top: 12px" @click="prev">Previous step</el-button>
-      <el-button style="margin-top: 12px" @click="submitForm(ruleFormRef)">
-        {{ currentStep !== FORM_STEP.SUBMIT ? 'Next step' : 'Submit' }}
-      </el-button>
+          <div v-else-if="currentStep === FORM_STEP.RESTAURANT" class="outer m-4 rounded">
+            <RestaurantSelection
+              v-model:restaurantSelection="mealForm.restaurant"
+              class="inner"
+              :mealSelection="mealForm.mealType"
+            />
+          </div>
+          <div v-else-if="currentStep === FORM_STEP.DISHED" class="outer m-4 rounded">
+            <CreateDishList
+              v-model:dishSelection="mealForm.dishes"
+              class="inner"
+              :restaurant="mealForm.restaurant"
+            />
+          </div>
+          <div v-else-if="currentStep === FORM_STEP.SUBMIT" class="outer m-4 rounded">
+            <FormOverview class="inner" :formInfo="mealForm" />
+          </div>
+        </Transition>
+      </ElForm>
+      <div class="flex items-center justify-between text-primary-gray">
+        <el-button v-if="currentStep > FORM_STEP.MEAL" class="text-primary-gray" @click="prev"
+          >Previous step</el-button
+        >
+        <el-button class="mt-3 text-primary-gray" @click="submitForm(ruleFormRef)">
+          {{ currentStep !== FORM_STEP.SUBMIT ? 'Next step' : 'Submit' }}
+        </el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -58,16 +56,16 @@ import { DishSelection } from '@/interfaces';
 import { ElNotification } from 'element-plus';
 
 enum FORM_STEP {
-  MEAL = 1,
-  RESTAURANT = 2,
-  DISHED = 3,
-  SUBMIT = 4,
+  MEAL = 0,
+  RESTAURANT = 1,
+  DISHED = 2,
+  SUBMIT = 3,
 }
 
 const STEP_LIST = [
   {
     id: FORM_STEP.MEAL,
-    title: 'Meal choice',
+    title: 'Meal',
   },
   {
     id: FORM_STEP.RESTAURANT,
@@ -157,7 +155,7 @@ const dishesValidator = (rule: any, value: any, callback: any) => {
 const rules = reactive<FormRules<PreorderForm>>({
   mealType: [{ required: true, message: 'Please select a meal', trigger: 'change' }],
   customerCount: [{ required: true, trigger: 'blur', validator: customerValidator }],
-  restaurant: [{ required: true, trigger: 'change' }],
+  restaurant: [{ required: true, message: 'Please choose a restaurant', trigger: 'change' }],
   dishes: [{ trigger: 'blur', validator: dishesValidator }],
 });
 

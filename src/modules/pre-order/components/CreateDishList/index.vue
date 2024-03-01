@@ -1,5 +1,6 @@
 <template>
   <div class="w-full">
+    <div class="text-lg font-medium mb-3">Choose your dishes</div>
     <ElFormItem prop="dishes" class="w-full" required>
       <div
         v-for="(dish, dishIndex) of dishSelection"
@@ -25,7 +26,7 @@
     </ElFormItem>
     <ElButton
       v-if="size(dishSelection) !== size(dishSelectionListByRestaurant)"
-      class="mt-4"
+      class="mt-2.5"
       @click="handleAddDish"
     >
       <ElIcon><Plus /></ElIcon>
