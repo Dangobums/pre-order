@@ -14,4 +14,11 @@ html {
 body {
   font-family: -apple-system, 'Noto Sans', roboto, blinkmacsystemfont, 'Segoe UI', 'Helvetica Neue', arial,
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 12px;
+  }
 }

@@ -26,7 +26,7 @@
           {{ formInfo.restaurant }}
         </span>
       </div>
-      <div class="flex items-center">
+      <div class="flex sm:items-center sm:flex-row flex-col">
         <span class="text-gray-700 font-bold mb-1">Dishes:</span>
         <ul class="flex-1 list-disc pl-8 shadow bg-white !bg-opacity-20 p-4 ml-2">
           <li v-for="dish of formInfo.dishes" :key="dish.id" class="text-gray-700">
