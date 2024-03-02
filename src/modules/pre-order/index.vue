@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden p-10 h-full bg-teal-100">
-    <div class="bg-blue-300 !bg-opacity-40 rounded-lg p-8 shadow-xl max-w-96 m-auto">
+    <div class="bg-orange-100 !bg-opacity-40 rounded-lg p-8 shadow-xl max-w-96 m-auto">
       <ElSteps :active="currentStep" finish-status="success">
         <ElStep v-for="step of STEP_LIST" :key="step.id" :title="step.title" />
       </ElSteps>
@@ -28,7 +28,7 @@
               :restaurant="mealForm.restaurant"
             />
           </div>
-          <div v-else-if="currentStep === FORM_STEP.SUBMIT" class="outer m-4 rounded">
+          <div v-else-if="currentStep === FORM_STEP.SUBMIT" class="outer rounded">
             <FormOverview class="inner" :formInfo="mealForm" />
           </div>
         </Transition>

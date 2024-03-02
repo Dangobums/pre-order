@@ -1,29 +1,35 @@
 <template>
-  <div class="max-w-full mx-auto p-5">
+  <div class="max-w-full">
     <div class="bg-gray-100 p-4 rounded-lg shadow-md">
       <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
-      <div class="mb-3">
-        <span class="block text-gray-700 text-sm font-bold mb-1">Meal:</span>
-        <div class="bg-white shadow border rounded py-2 px-3 text-gray-700 capitalize">
+      <div class="mb-3 flex items-center">
+        <span class="text-gray-700 font-bold mb-1">Meal:</span>
+        <span
+          class="text-center border-0 border-b border-solid py-1 px-3 text-gray-700 capitalize w-full ml-2 font-bold"
+        >
           {{ formInfo.mealType }}
-        </div>
+        </span>
       </div>
-      <div class="mb-3">
-        <span class="block text-gray-700 text-sm font-bold mb-1">Number of People:</span>
-        <p class="bg-white shadow border rounded py-2 px-3 text-gray-700 leading-tight">
+      <div class="mb-3 flex items-center">
+        <span class="text-gray-700 font-bold whitespace-nowrap">Number of People:</span>
+        <span
+          class="text-center border-0 border-b border-solid py-1 px-3 text-gray-700 capitalize w-full ml-2 font-bold"
+        >
           {{ formInfo.customerCount }}
-        </p>
+        </span>
       </div>
-      <div class="mb-3">
-        <span class="block text-gray-700 text-sm font-bold mb-1">Restaurant:</span>
-        <p class="bg-white shadow border rounded py-2 px-3 text-gray-700 leading-tight">
+      <div class="mb-3 flex items-center">
+        <span class="text-gray-700 font-bold whitespace-nowrap">Restaurant:</span>
+        <span
+          class="text-center border-0 border-b border-solid py-1 px-3 text-gray-700 capitalize w-full ml-2 font-bold"
+        >
           {{ formInfo.restaurant }}
-        </p>
+        </span>
       </div>
-      <div class="mb-3">
-        <span class="block text-gray-700 text-sm font-bold mb-1">Dishes:</span>
-        <ul class="list-disc pl-8">
-          <li v-for="dish of formInfo.dishes" :key="dish.id" class="text-gray-700 text-sm">
+      <div class="flex items-center">
+        <span class="text-gray-700 font-bold mb-1">Dishes:</span>
+        <ul class="flex-1 list-disc pl-8 shadow bg-white !bg-opacity-20 p-4 ml-2">
+          <li v-for="dish of formInfo.dishes" :key="dish.id" class="text-gray-700">
             {{ idToName(dish.id) }} - {{ dish.serving }}
           </li>
         </ul>

@@ -16,7 +16,7 @@
         ></ElOption>
       </ElSelect>
     </ElFormItem>
-    <div class="mb-2">Please enter number of people</div>
+    <div class="mb-2 font-medium text-lg">Please enter number of people</div>
 
     <ElFormItem prop="customerCount">
       <ElInputNumber v-model:model-value="peopleCount" :min="1" :max="10" />

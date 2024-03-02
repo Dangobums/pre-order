@@ -1,7 +1,7 @@
 <template>
   <ElFormItem prop="restaurant">
     <div class="w-full">
-      <div>Please select a restaurant</div>
+      <span class="block font-medium text-lg mb-3">Please select a restaurant</span>
       <ElSelect v-model:model-value="restaurantSelection">
         <ElOption v-for="item of restaurantByMeal" :key="item" :value="item" :label="item"></ElOption>
       </ElSelect>
