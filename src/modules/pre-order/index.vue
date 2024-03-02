@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-hidden p-10 h-full bg-teal-100">
     <div class="bg-orange-100 !bg-opacity-40 rounded-lg p-8 shadow-xl max-w-96 m-auto">
-      <ElSteps :active="currentStep" finish-status="success">
+      <ElSteps :active="currentStep" finish-status="success" align-center>
         <ElStep v-for="step of STEP_LIST" :key="step.id" :title="step.title" />
       </ElSteps>
       <ElForm ref="ruleFormRef" :rules="rules" :model="mealForm">
@@ -33,12 +33,12 @@
           </div>
         </Transition>
       </ElForm>
-      <div class="flex items-center justify-between text-primary-gray">
-        <el-button v-if="currentStep > FORM_STEP.MEAL" class="text-primary-gray" @click="prev"
-          >Previous step</el-button
-        >
-        <el-button class="mt-3 text-primary-gray" @click="submitForm(ruleFormRef)">
-          {{ currentStep !== FORM_STEP.SUBMIT ? 'Next step' : 'Submit' }}
+      <div class="flex items-center justify-between text-primary-gray mt-3">
+        <el-button v-if="currentStep > FORM_STEP.MEAL" class="text-primary-gray" color="#FFECB3" @click="prev"
+          >Previous
+        </el-button>
+        <el-button class="text-primary-gray" color="green" @click="submitForm(ruleFormRef)">
+          {{ currentStep !== FORM_STEP.SUBMIT ? 'Next' : 'Submit' }}
         </el-button>
       </div>
     </div>

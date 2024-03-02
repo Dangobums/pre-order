@@ -4,7 +4,7 @@
       <ElOption v-for="item of menuItem" :key="item.id" :value="item.id" :label="item.label"></ElOption>
     </ElSelect>
 
-    <ElInputNumber v-model="modelServing" class="col-start-5" label="dishes" :controls-position="'right'" />
+    <ElInputNumber v-model="modelServing" class="col-start-5" label="dishes" :controls-position="'right'" :min="1" />
   </div>
 </template>
 <script setup lang="ts">
