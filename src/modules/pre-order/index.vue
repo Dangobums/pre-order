@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-light-green overflow-hidden p-10">
-    <div class="bg-light-gray rounded-lg p-4">
+  <div class="overflow-hidden p-10 h-full bg-teal-100">
+    <div class="bg-blue-300 !bg-opacity-40 rounded-lg p-8 shadow-xl max-w-96 m-auto">
       <ElSteps :active="currentStep" finish-status="success">
         <ElStep v-for="step of STEP_LIST" :key="step.id" :title="step.title" />
       </ElSteps>
